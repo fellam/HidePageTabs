@@ -100,25 +100,21 @@ function hideTabsPageList($title, array &$links) {
 	global $hideTabsPageList;
 	if (array_key_exists ( $title, $hideTabsPageList )) {
 		foreach ( $links as $group => $tabs ) {
-			switch ($group) {
-				case "views" :
-					echo "<br>DUMP<br>";
-					var_dump ( $tabs );
-					foreach ( $tabs as $tab => $props ) {
-						echo "<br>views-><br>";
-						var_dump($tab);
-					}
-					// unset( $links['actions'] );
-					// unset( $links['views'][$view] );
-					break;
-				case "actions" :
-					echo "<br>DUMP<br>";
-					var_dump ( $tabs );
-					foreach ( $tabs as $tab => $props ) {
-						echo "<br>actions-><br>";
-						var_dump($tab);
-					}
-					break;
+			if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
+				echo "<br>Page: $title -> Group: $group<br>";
+				switch ($group) {
+					case "views" :
+					case "actions" :
+						foreach ( $tabs as $tab => $props ) {
+							var_dump($tab);
+							if (array_key_exists ( $tab, $hideTabsPageList[$title][$group] )) {
+								echo "<br>REMOVE $group -> $tab <br>";
+							}
+						}
+						// unset( $links['actions'] );
+						// unset( $links['views'][$view] );
+						break;
+				}
 			}
 		}
 		exit ();
