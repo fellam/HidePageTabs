@@ -107,6 +107,8 @@ function hideTabsPageList($title, array &$links) {
 					case "actions" :
 						echo "<br>OK1<br>";
 						foreach ( $tabs as $tab => $props ) {
+							echo "<br>OK2: $tab <br>";
+							var_dump($hideTabsPageList[$title][$group]);
 							if (array_key_exists ( $tab, $hideTabsPageList[$title][$group] )) {
 								echo "<br>REMOVE $group -> $tab <br>";
 							}
