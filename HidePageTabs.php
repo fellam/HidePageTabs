@@ -99,25 +99,25 @@ function hidePageTabs(SkinTemplate &$sktemplate, array &$links) {
 function hideTabsPageList($title, array &$links) {
 	global $hideTabsPageList;
 	if (array_key_exists ( $title, $hideTabsPageList )) {
-		foreach ( $links as $k => $tab ) {
-			switch ($k) {
+		foreach ( $links as $group => $tabs ) {
+			switch ($group) {
 				case "views" :
-					var_dump ( $v );
-					foreach ( $v as $tab ) {
+					var_dump ( $tabs );
+					foreach ( $tabs as $tab ) {
 						echo "views->$tab<br>";
 					}
 					// unset( $links['actions'] );
 					// unset( $links['views'][$view] );
 					break;
 				case "actions" :
-					var_dump ( $v );
-					foreach ( $v as $tab ) {
+					var_dump ( $tabs );
+					foreach ( $tabs as $tab ) {
 						echo "actions->$tab<br>";
 					}
 					break;
 			}
 		}
+		exit ();
 	}
-	exit ();
 }
 	
