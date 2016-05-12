@@ -93,7 +93,7 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
 function hideTabsPageList($title,array &$links){
 	global $hideTabsPageList;
 	foreach ( $hideTabsPageList as $key => $value) {
-		if( $mPrefixedText == $key ) {
+		if( $title == $key ) {
 			//var_dump($links);
 			foreach ( $links as $k=>$v ) {
 				echo "<br>view=$k<br>";
