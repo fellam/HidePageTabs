@@ -105,7 +105,6 @@ function hideTabsPageList($title, array &$links) {
 				switch ($group) {
 					case "views" :
 					case "actions" :
-						echo "<br>OK1<br>";
 						foreach ( $tabs as $tab => $props ) {
 							echo "<br>OK2: $tab <br>";
 							var_dump($hideTabsPageList[$title][$group]);
@@ -121,7 +120,6 @@ function hideTabsPageList($title, array &$links) {
 				}
 			}
 		}
-		exit ();
 	}
 }
 	
