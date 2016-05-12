@@ -95,9 +95,19 @@ function hideTabsPageList($title,array &$links){
 	foreach ( $hideTabsPageList as $key => $value) {
 		if( $title == $key ) {
 			//var_dump($links);
+			var_dump($links);
 			foreach ( $links as $k=>$v ) {
 				echo "<br>view=$k<br>";
 				var_dump($v);
+				/*
+				view=namespaces
+				array(2) { ["main"]=> array(5) { ["class"]=> string(8) "selected" ["text"]=> string(9) "Main page" ["href"]=> string(25) "/wiki/index.php/Main_Page" ["primary"]=> bool(true) ["context"]=> string(7) "subject" } ["talk"]=> array(5) { ["class"]=> string(0) "" ["text"]=> string(10) "Discussion" ["href"]=> string(30) "/wiki/index.php/Talk:Main_Page" ["primary"]=> bool(true) ["context"]=> string(4) "talk" } }
+				view=views
+				array(3) { ["view"]=> array(5) { ["class"]=> string(8) "selected" ["text"]=> string(4) "Read" ["href"]=> string(25) "/wiki/index.php/Main_Page" ["primary"]=> bool(true) ["redundant"]=> bool(true) } ["edit"]=> array(4) { ["class"]=> string(0) "" ["text"]=> string(4) "Edit" ["href"]=> string(43) "/wiki/index.php?title=Main_Page&action=edit" ["primary"]=> bool(true) } ["history"]=> array(3) { ["class"]=> bool(false) ["text"]=> string(12) "View history" ["href"]=> string(46) "/wiki/index.php?title=Main_Page&action=history" } }
+				view=actions
+				array(4) { ["delete"]=> array(3) { ["class"]=> bool(false) ["text"]=> string(6) "Delete" ["href"]=> string(45) "/wiki/index.php?title=Main_Page&action=delete" } ["move"]=> array(3) { ["class"]=> bool(false) ["text"]=> string(4) "Move" ["href"]=> string(42) "/wiki/index.php/Special:MovePage/Main_Page" } ["unprotect"]=> array(3) { ["class"]=> bool(false) ["text"]=> string(17) "Change protection" ["href"]=> string(48) "/wiki/index.php?title=Main_Page&action=unprotect" } ["unwatch"]=> array(3) { ["class"]=> bool(false) ["text"]=> string(7) "Unwatch" ["href"]=> string(99) "/wiki/index.php?title=Main_Page&action=unwatch&token=05301eb41a5729140f06498e7312066e573471d0%2B%5C" } }
+				view=variants
+				array(0) { }
 				/*
 				 if($view == "actions"){
 				 unset( $links['actions'] );
