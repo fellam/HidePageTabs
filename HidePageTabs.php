@@ -93,31 +93,27 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
 function hideTabsPageList($title,array &$links){
 	global $hideTabsPageList;
 	if(array_key_exists($title,$hideTabsPageList)){
-		echo "EXISTS <br>";
-	}
-	foreach ( $hideTabsPageList as $key => $value) {
-		if( $title == $key ) {
-			foreach ( $links as $k=>$tab ) {
-				if($k == "views"){
-					var_dump($v);
-					foreach ( $v as $tab ) {
-						echo "views->$tab<br>";
-					}
-				 	//unset( $links['actions'] );
+		foreach ( $links as $k=>$tab ) {
+			if($k == "views"){
+				var_dump($v);
+				foreach ( $v as $tab ) {
+					echo "views->$tab<br>";
 				}
-				if($k == "actions"){
-					var_dump($v);
-					foreach ( $v as $tab ) {
-						echo "actions->$tab<br>";
-					}
-					//unset( $links['actions'] );
-				}
-// 				if ( $links['views'][$view] ){
-// 					var_dump($v);
-				 	//unset( $links['views'][$view] );
-// 				}
+				//unset( $links['actions'] );
 			}
-			exit;
+			if($k == "actions"){
+				var_dump($v);
+				foreach ( $v as $tab ) {
+					echo "actions->$tab<br>";
+				}
+				//unset( $links['actions'] );
+			}
+			// 				if ( $links['views'][$view] ){
+			// 					var_dump($v);
+			//unset( $links['views'][$view] );
+			// 				}
 		}
+		exit;
 	}
+			
 }
