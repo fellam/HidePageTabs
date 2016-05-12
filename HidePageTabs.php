@@ -102,7 +102,7 @@ function hideTabsPageList($title, array &$links) {
 		foreach ( $links as $group => $tabs ) {
 			switch ($group) {
 				case "views" :
-					echo "DUMP<br>";
+					echo "<br>DUMP<br>";
 					var_dump ( $tabs );
 					foreach ( $tabs as $tab ) {
 						echo "views-><br>";
@@ -112,7 +112,7 @@ function hideTabsPageList($title, array &$links) {
 					// unset( $links['views'][$view] );
 					break;
 				case "actions" :
-					echo "DUMP<br>";
+					echo "<br>DUMP<br>";
 					var_dump ( $tabs );
 					foreach ( $tabs as $tab ) {
 						echo "actions-><br>";
