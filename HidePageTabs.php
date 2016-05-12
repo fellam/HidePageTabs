@@ -92,6 +92,7 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
  */
 function hideTabsPageList($title,array &$links){
 	global $hideTabsPageList;
+	var_dump($links);
 	foreach ( $hideTabsPageList as $key => $value) {
 		if( $title == $key ) {
 			foreach ( $links as $k=>$v ) {
