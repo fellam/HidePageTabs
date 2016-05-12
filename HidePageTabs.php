@@ -104,7 +104,7 @@ function hideTabsPageList($title, array &$links) {
 				case "views" :
 					echo "<br>DUMP<br>";
 					var_dump ( $tabs );
-					foreach ( $tabs as $tab ) {
+					foreach ( $tabs as $tab => $props ) {
 						echo "<br>views-><br>";
 						var_dump($tab);
 					}
@@ -114,7 +114,7 @@ function hideTabsPageList($title, array &$links) {
 				case "actions" :
 					echo "<br>DUMP<br>";
 					var_dump ( $tabs );
-					foreach ( $tabs as $tab ) {
+					foreach ( $tabs as $tab => $props ) {
 						echo "<br>actions-><br>";
 						var_dump($tab);
 					}
