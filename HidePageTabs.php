@@ -97,11 +97,11 @@ function hideTabsPageList($title,array &$links){
 			foreach ( $links as $k=>$v ) {
 				echo "<br>KEY=$k<br>";
 				if($view == "actions"){
-					var_dump($v);
+					//var_dump($v);
 				 	//unset( $links['actions'] );
 				}
 				if ( $links['views'][$view] ){
-					var_dump($v);
+// 					var_dump($v);
 				 	//unset( $links['views'][$view] );
 				}
 			}
