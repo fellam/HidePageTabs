@@ -48,7 +48,7 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
 	//retrieve article title
 	$mPrefixedText=$wgTitle->getPrefixedText();
 	//force tabs removal for anyone
-	hideTabsPageList($mPrefixedText);
+	hideTabsPageList($mPrefixedText,$links);
 	return true;
 	// Only remove tabs if user isn't allowed to edit pages
 	/*
@@ -90,7 +90,7 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
  * @param $links
  * @return bool
  */
-function hideTabsPageList($title,$links){
+function hideTabsPageList($title,array &$links){
 	global $hideTabsPageList;
 	foreach ( $hideTabsPageList as $key => $value) {
 		if( $mPrefixedText == $key ) {
