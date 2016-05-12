@@ -7,7 +7,7 @@
 *
 * @author: Michele Fella - michele.fella@gmail.com
 *
-* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+* @license http://www.apache.org/licenses/ General Public License 2.0 or later
 *
 */
 
@@ -23,17 +23,19 @@ $wgExtensionCredits['other'][] = array(
 // Hooks
 $wgHooks['SkinTemplateNavigation'][] = 'hidePageTabs';
 
-// Tabs of view to remove array
-$allowGroupToCategory = array();
-$hideTabsByGroup= array();
-//$wgHVTFUUviewsToRemove[] = 'viewsource';
-//$wgHVTFUUviewsToRemove = array( 'edit', 'history', 'read', 'talk', 'viewsource','formedit' );
-//$wgHVTFUUactionsToRemove = array( 'delete', 'move', 'protect', 'watch', 'variants');
-//
+// Arrays declaration
+
+// hide article tabs, this works despite the user groups or permission. Actions such as edit, move and so on will still be available if manually pointed in the url, but the tab in the page will not be visible.  A tipical example for using this functionality is the hiding of the tabs in the Main Page, where you dont want tabs such as edit, move or delete to be visible.
 $hideTabsPageList = array();
+// avoid both edit and edit with form tabs to be visible: it will hide the edit with form for Templates and Forms. For all other pages, if the edit with form will be available it will hide the edit tab. This helps when you want to drive users using forms for the editing of an article
+$allowGroupToCategory = array();
+//hide views and actions tabs if the user groups is not allowed to perfoem specific actions on the article category. This works configuring for the a specific group the list of the categories where actions should be checked and the list of possible views or actions that needs to be hidden.
+//The page will be always built according to the wiki wgGroupPermissions configuration, btu tabs will be eventually removed according to the configuration rules.
+$hideTabsByGroup= array();
+//
 
 // Remove 'edit' permission from anonymous users
-// NOTE MIK: THis is done in LocalSettings
+// NOTE MIK: This is configured in LocalSettings according to the owner needs
 //$wgGroupPermissions['*']['edit'] = false;
 
 /**
@@ -42,28 +44,11 @@ $hideTabsPageList = array();
  * @return bool
  */
 function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
-	global $wgUser, $wgHVTFUUviewsToRemove, $wgTitle, $hideTabsPageList;
+	global $wgUser,$wgTitle,$allowGroupToCategory,$hideTabsByGroup;
 	//retrieve article title
 	$mPrefixedText=$wgTitle->getPrefixedText();
 	//force tabs removal for anyone
-	foreach ( $hideTabsPageList as $key => $value) {
-		if( $mPrefixedText == $key ) {
-			//var_dump($links);
-			foreach ( $links as $k=>$v ) {
-				echo "<br>view=$k<br>";
-				//var_dump();
-				/*
-				 if($view == "actions"){
-				 unset( $links['actions'] );
-				 }
-				 if ( $links['views'][$view] ){
-				 unset( $links['views'][$view] );
-				 }
-				 */
-			}
-			exit;
-		}
-	}
+	hideTabsPageList($mPrefixedText);
 	return true;
 	// Only remove tabs if user isn't allowed to edit pages
 	
@@ -98,4 +83,31 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
 	}
 	
 	return true;
+}
+
+/**
+ * @param $title Article Title
+ * @param $links
+ * @return bool
+ */
+function hideTabsPageList($title,$links){
+	global $hideTabsPageList;
+	foreach ( $hideTabsPageList as $key => $value) {
+		if( $mPrefixedText == $key ) {
+			//var_dump($links);
+			foreach ( $links as $k=>$v ) {
+				echo "<br>view=$k<br>";
+				//var_dump();
+				/*
+				 if($view == "actions"){
+				 unset( $links['actions'] );
+				 }
+				 if ( $links['views'][$view] ){
+				 unset( $links['views'][$view] );
+				 }
+				 */
+			}
+			exit;
+		}
+	}
 }
