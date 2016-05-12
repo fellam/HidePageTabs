@@ -51,7 +51,7 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
 	hideTabsPageList($mPrefixedText);
 	return true;
 	// Only remove tabs if user isn't allowed to edit pages
-	
+	/*
 	if ( $wgUser->isAllowed( 'edit' ) ) {
 		echo "ALLOWED<br>";
 		if ( (substr( $mPrefixedText, 0, 9 ) != "Template:")
@@ -81,7 +81,7 @@ function hidePageTabs( SkinTemplate &$sktemplate, array &$links ) {
 		if ( $links['views'][$view] )
 			unset( $links['views'][$view] );
 	}
-	
+	*/
 	return true;
 }
 
@@ -97,7 +97,7 @@ function hideTabsPageList($title,$links){
 			//var_dump($links);
 			foreach ( $links as $k=>$v ) {
 				echo "<br>view=$k<br>";
-				//var_dump();
+				var_dump($v);
 				/*
 				 if($view == "actions"){
 				 unset( $links['actions'] );
