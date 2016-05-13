@@ -107,6 +107,8 @@ function hideTabsPageList($title, array &$links) {
 						foreach ( $tabs as $tab => $props ) {
 							if (in_array( $tab, $hideTabsPageList[$title][$group])) {
 								unset( $links[$group][$tab] );
+							}else{
+								echo "<br> UNKNOWN: links[$group][$tab]<br>"
 							}
 						}
 						break;
