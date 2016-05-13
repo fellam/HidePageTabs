@@ -108,13 +108,13 @@ function hideTabsPageList($title, array &$links) {
 							if (in_array( $tab, $hideTabsPageList[$title][$group])) {
 								unset( $links[$group][$tab] );
 							}
-							else{
-								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
-							}
+// 							else{
+// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
+// 							}
 						}
 						break;
-					default:
-						echo "<br> UNKNOWN GROUP: links[$group]<br>";
+// 					default:
+// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
 				}
 			}
 		}
