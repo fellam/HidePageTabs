@@ -108,11 +108,11 @@ function hideTabsPageList($title, array &$links) {
 					case "actions" :
 						foreach ( $tabs as $tab => $props ) {
 							echo "<br>OK1 - TAB: $tab <br>";
-							echo "<br>OK2 - hideTabsPageList[title]:";
+							echo "<br>OK2 - hideTabsPageList[$title]:";
 							var_dump($hideTabsPageList[$title]);
-							echo "<br>OK3 - hideTabsPageList[title][group]:";
+							echo "<br>OK3 - hideTabsPageList[$title][$group]:";
 							var_dump($hideTabsPageList[$title][$group]);
-							if (in_array  ( $tab, $hideTabsPageList[$title][$group] )) {
+							if (in_array( $tab, $hideTabsPageList[$title][$group])) {
 								echo "<br>REMOVE $group -> $tab <br>";
 							}else{
 								echo "<br>NOT FOUND $group -> $tab <br>";
