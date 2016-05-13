@@ -107,8 +107,7 @@ function hideTabsPageList($title, array &$links) {
 						foreach ( $tabs as $tab => $props ) {
 							if (in_array( $tab, $hideTabsPageList[$title][$group])) {
 								echo "<br>REMOVE $group -> $tab <br>";
-							}else{
-								echo "<br>NOT FOUND $group -> $tab <br>";
+								unset( $links[$group][$tab] );
 							}
 						}
 						// unset( $links['actions'] );
