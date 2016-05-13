@@ -116,7 +116,6 @@ function hideTabsPageList($title, array &$links) {
 				}
 			}
 		}
-		exit();
 	}
 }
 	
