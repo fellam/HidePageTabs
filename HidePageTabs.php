@@ -133,9 +133,9 @@ function showTabsByGroupCategory($title, array &$links) {
 			echo "<br> OK2 <br>";
 			foreach ( $wgOut as $k => $v ) {
 				echo "<br> KEY: $k <br>";
-				if(0 === strpos($title, 'Categ:')){
+// 				if(0 === strpos($title, 'Categ:')){
 					var_dump($wgOut->$k);
-				}
+// 				}
 			}
 			echo "<br> OK3 <br>";
 			
