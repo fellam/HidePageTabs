@@ -51,7 +51,7 @@ function hidePageTabs(SkinTemplate &$sktemplate, array &$links) {
 	// force tabs removal for anyone
 	hideTabsPageList ( $mPrefixedText, $links );
 	// remove edit tab if formedit exist
-// 	checkFormEdit ( $mPrefixedText, $links );
+	checkFormEdit ( $mPrefixedText, $links );
 // 	return true;
 	// Only remove tabs if user isn't allowed to edit pages
 	/*
