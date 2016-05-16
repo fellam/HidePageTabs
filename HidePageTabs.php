@@ -125,15 +125,20 @@ function checkFormEdit($title, array &$links) {
  * @return bool
  */
 function showTabsByGroupCategory($title, array &$links) {
-	global $wgUser, $wgTitle, $showTabsByGroupCategory;
+	global $wgUser, $wgOut, $showTabsByGroupCategory;
 	if($title == 'HideTest'){
 		if (array_key_exists ( 'mGroups', $wgUser )){
-			
 			echo "<br> OK1 <br>";
 			var_dump($wgUser->mGroups);
 			echo "<br> OK2 <br>";
-			var_dump($wgTitle);
+			foreach ( $wgOut as $k => $v ) {
+				if(0 === strpos($title, 'Categ:')){
+					echo "<br> KEY: $k <br>";
+					var_dump($wgOut->$k);
+				}
+			}
 			echo "<br> OK3 <br>";
+			
 			foreach ( $showTabsByGroupCategory as $group => $categories ) {
 				if (in_array ( $group, $wgUser->mGroups )){
 					echo "<br> MIK <br>";
