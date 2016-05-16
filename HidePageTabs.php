@@ -30,7 +30,7 @@ $wgHooks ['SkinTemplateNavigation'] [] = 'hidePageTabs';
 $hideTabsPageList = array ();
 // hide views and actions tabs if the user groups is not allowed to perfoem specific actions on the article category. This works configuring for the a specific group the list of the categories where actions should be checked and the list of possible views or actions that needs to be hidden.
 // The page will be always built according to the wiki wgGroupPermissions configuration, btu tabs will be eventually removed according to the configuration rules.
-$hideTabsByGroupCategory = array ();
+$showTabsByGroupCategory = array ();
 //
 
 // Remove 'edit' permission from anonymous users
@@ -53,7 +53,7 @@ function hidePageTabs(SkinTemplate &$sktemplate, array &$links) {
 	// remove edit tab if formedit exist
 	checkFormEdit ( $mPrefixedText, $links );
 	// hide tab according to Group/Category definition
-	hideTabsByGroupCategory($mPrefixedText, $links );
+	showTabsByGroupCategory($mPrefixedText, $links );
  	return true;
 }
 
@@ -124,47 +124,48 @@ function checkFormEdit($title, array &$links) {
  *        	$links
  * @return bool
  */
-function hideTabsByGroupCategory($title, array &$links) {
-	global $wgUser, $wgTitle, $hideTabsByGroupCategory;
+function showTabsByGroupCategory($title, array &$links) {
+	global $wgUser, $wgTitle, $showTabsByGroupCategory;
 	if($title == 'HideTest'){
-		echo "<br> OK1 <br>";
-		var_dump($wgUser->mGroups);
 		if (array_key_exists ( 'mGroups', $wgUser )){
-			echo "<br> HAS GROUPS <br>";
-		}
-		echo "<br> OK2 <br>";
-		var_dump($wgTitle);
-		echo "<br> OK3 <br>";
-		foreach ( $hideTabsByGroupCategory as $group => $categories ) {
-			if (in_array ( $group, $wgUser->mGroups )){
-				echo "<br> MIK <br>";
-			}
-			/*
-			foreach ( $wgUser->mGroups as $group => $categories ) {
-				if (array_key_exists ( $group, $hideTabsPageList )) {
-					foreach ( $links as $group => $tabs ) {
-						if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
-							switch ($group) {
-								case "views" :
-								case "actions" :
-									foreach ( $tabs as $tab => $props ) {
-										if (in_array( $tab, $hideTabsPageList[$title][$group])) {
-											unset( $links[$group][$tab] );
+			
+			echo "<br> OK1 <br>";
+			var_dump($wgUser->mGroups);
+			echo "<br> OK2 <br>";
+			var_dump($wgTitle);
+			echo "<br> OK3 <br>";
+			foreach ( $showTabsByGroupCategory as $group => $categories ) {
+				if (in_array ( $group, $wgUser->mGroups )){
+					echo "<br> MIK <br>";
+				}
+				/*
+				foreach ( $wgUser->mGroups as $group => $categories ) {
+					if (array_key_exists ( $group, $hideTabsPageList )) {
+						foreach ( $links as $group => $tabs ) {
+							if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
+								switch ($group) {
+									case "views" :
+									case "actions" :
+										foreach ( $tabs as $tab => $props ) {
+											if (in_array( $tab, $hideTabsPageList[$title][$group])) {
+												unset( $links[$group][$tab] );
+											}
+											// 							else{
+											// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
+											// 							}
 										}
-										// 							else{
-										// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
-										// 							}
-									}
-									break;
-									// 					default:
-									// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
+										break;
+										// 					default:
+										// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
+								}
 							}
 						}
 					}
 				}
+				*/
 			}
-			*/
 		}
+		exit();
 	}
 }
 	
