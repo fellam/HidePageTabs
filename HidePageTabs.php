@@ -130,13 +130,16 @@ function showTabsByGroupCategory($title, array &$links) {
 		if (array_key_exists ( 'mGroups', $wgUser )){
 			echo "<br> OK1 <br>";
 			var_dump($wgUser->mGroups);
-			echo "<br> OK2: $wgOut->getCategories() <br>";
+			echo "<br> OK2:  <br>";
+			var_dump($wgOut->getCategories());
+			/*
 			foreach ( $wgOut as $k => $v ) {
 				echo "<br> KEY: $k <br>";
 // 				if(0 === strpos($title, 'Categ:')){
 					var_dump($wgOut->$k);
 // 				}
 			}
+			*/
 			echo "<br> OK3 <br>";
 			
 			foreach ( $showTabsByGroupCategory as $group => $categories ) {
