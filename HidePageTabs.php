@@ -133,15 +133,14 @@ function checkFormEdit($title, array &$links) {
 	$hideEdit=true;
 	if ( (0 === strpos($title, 'Template:')) || ( 0 === strpos($title, 'Form:')) ){
 		$hideEdit=false;
-		echo "<br> THIS IS A FORM/TEMPLATE: $title <br>";
 	}
 	if (array_key_exists ( "views", $links )) {
 		if (array_key_exists ( "formedit", $links["views"] )) {
 			if (array_key_exists ( "edit", $links["views"] )) {
 				if($hideEdit){
-					echo "<br> REMOVE EDIT <br>";
+					unset( $links["views"]["edit"] );
 				}else{
-					echo "<br> REMOVE FORMEDIT <br>";
+					unset( $links["views"]["formedit"] );
 				}
 			}
 		}
