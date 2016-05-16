@@ -126,11 +126,45 @@ function checkFormEdit($title, array &$links) {
  */
 function hideTabsByGroupCategory($title, array &$links) {
 	global $wgUser, $wgTitle, $hideTabsByGroupCategory;
-	if(0 === strpos($title, 'HideTest')){
+	if($title == 'HideTest'){
 		echo "<br> OK1 <br>";
-		var_dump($wgUser);
+		var_dump($wgUser->mGroups);
+		if (array_key_exists ( mGroups, $wgUser )){
+			echo "<br> HAS GROUPS <br>";
+		}
 		echo "<br> OK2 <br>";
 		var_dump($wgTitle);
+		echo "<br> OK3 <br>";
+		foreach ( $hideTabsByGroupCategory as $group => $categories ) {
+			if (in_array ( $group, $wgUser->mGroups )){
+				echo "<br> MIK <br>";
+			}
+			/*
+			foreach ( $wgUser->mGroups as $group => $categories ) {
+				if (array_key_exists ( $group, $hideTabsPageList )) {
+					foreach ( $links as $group => $tabs ) {
+						if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
+							switch ($group) {
+								case "views" :
+								case "actions" :
+									foreach ( $tabs as $tab => $props ) {
+										if (in_array( $tab, $hideTabsPageList[$title][$group])) {
+											unset( $links[$group][$tab] );
+										}
+										// 							else{
+										// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
+										// 							}
+									}
+									break;
+									// 					default:
+									// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
+							}
+						}
+					}
+				}
+			}
+			*/
+		}
 	}
 }
 	
