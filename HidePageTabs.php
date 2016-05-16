@@ -30,7 +30,7 @@ $wgHooks ['SkinTemplateNavigation'] [] = 'hidePageTabs';
 $hideTabsPageList = array ();
 // hide views and actions tabs if the user groups is not allowed to perfoem specific actions on the article category. This works configuring for the a specific group the list of the categories where actions should be checked and the list of possible views or actions that needs to be hidden.
 // The page will be always built according to the wiki wgGroupPermissions configuration, btu tabs will be eventually removed according to the configuration rules.
-$hideTabsByGroup = array ();
+$hideTabsByGroupCategory = array ();
 //
 
 // Remove 'edit' permission from anonymous users
@@ -52,40 +52,9 @@ function hidePageTabs(SkinTemplate &$sktemplate, array &$links) {
 	hideTabsPageList ( $mPrefixedText, $links );
 	// remove edit tab if formedit exist
 	checkFormEdit ( $mPrefixedText, $links );
-// 	return true;
-	// Only remove tabs if user isn't allowed to edit pages
-	/*
-	 * if ( $wgUser->isAllowed( 'edit' ) ) {
-	 * echo "ALLOWED<br>";
-	 * if ( (substr( $mPrefixedText, 0, 9 ) != "Template:")
-	 * and (substr( $mPrefixedText, 0, 5 ) != "Form:")
-	 * and (substr( $mPrefixedText, 0, 9 ) != "Category:")
-	 * and (substr( $mPrefixedText, 0, 9 ) != "Property:")
-	 * and (substr( $mPrefixedText, 0, 8 ) != "Special:")){
-	 * $hasFormEdit = array_key_exists('formedit',$links['views']);
-	 * if ( $hasFormEdit ){
-	 * unset( $links['views']['edit'] );
-	 * }
-	 * }else{
-	 * // For Template, Forms, Categories and properties always allow only edit
-	 * //var_dump($links);
-	 * //exit;
-	 * //unset( $links['views']['formedit'] );
-	 * }
-	 * return false;
-	 * }else{
-	 * echo "NOT ALLOWED<br>";
-	 * //var_dump($links);
-	 * //exit;
-	 * }
-	 *
-	 * // Remove actions tabs
-	 * foreach ( $wgHVTFUUviewsToRemove as $view ) {
-	 * if ( $links['views'][$view] )
-	 * unset( $links['views'][$view] );
-	 * }
-	 */
-// 	return true;
+	// hide tab according to Group/Category definition
+	hideTabsByGroupCategory($mPrefixedText, $links );
+ 	return true;
 }
 
 /**
@@ -144,6 +113,24 @@ function checkFormEdit($title, array &$links) {
 				}
 			}
 		}
+	}
+}
+
+/**
+ *
+ * @param $title Article
+ *        	Title
+ * @param
+ *        	$links
+ * @return bool
+ */
+function hideTabsByGroupCategory($title, array &$links) {
+	global $wgUser, $wgTitle, $hideTabsByGroupCategory;
+	if(0 === strpos($title, 'HideTest')){
+		echo "<br> OK1 <br>";
+		var_dump($wgUser);
+		echo "<br> OK2 <br>";
+		var_dump($wgTitle);
 	}
 }
 	
