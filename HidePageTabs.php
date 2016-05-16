@@ -128,8 +128,10 @@ function showTabsByGroupCategory($title, array &$links) {
 	global $wgUser, $wgOut, $showTabsByGroupCategory;
 	if($title == 'HideTest'){
 		if (array_key_exists ( 'mGroups', $wgUser )){
-			echo "<br> OK1 <br>";
-			var_dump($wgUser->mGroups);
+			$pageCategories=$wgOut->getCategories();
+			echo "<br> OK1.2 <br>";
+// 			var_dump($wgUser->mGroups);
+			var_dump($wgUser->getGroups());
 			echo "<br> OK2:  <br>";
 			var_dump($wgOut->getCategories());
 			/*
