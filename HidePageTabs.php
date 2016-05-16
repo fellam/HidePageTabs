@@ -129,7 +129,7 @@ function hideTabsByGroupCategory($title, array &$links) {
 	if($title == 'HideTest'){
 		echo "<br> OK1 <br>";
 		var_dump($wgUser->mGroups);
-		if (array_key_exists ( mGroups, $wgUser )){
+		if (array_key_exists ( 'mGroups', $wgUser )){
 			echo "<br> HAS GROUPS <br>";
 		}
 		echo "<br> OK2 <br>";
