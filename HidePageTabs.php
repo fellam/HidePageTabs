@@ -51,8 +51,8 @@ function hidePageTabs(SkinTemplate &$sktemplate, array &$links) {
 	// force tabs removal for anyone
 	hideTabsPageList ( $mPrefixedText, $links );
 	// remove edit tab if formedit exist
-	checkFormEdit ( $mPrefixedText, $links );
-	return true;
+// 	checkFormEdit ( $mPrefixedText, $links );
+// 	return true;
 	// Only remove tabs if user isn't allowed to edit pages
 	/*
 	 * if ( $wgUser->isAllowed( 'edit' ) ) {
@@ -85,7 +85,7 @@ function hidePageTabs(SkinTemplate &$sktemplate, array &$links) {
 	 * unset( $links['views'][$view] );
 	 * }
 	 */
-	return true;
+// 	return true;
 }
 
 /**
