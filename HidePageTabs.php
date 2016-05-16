@@ -130,13 +130,19 @@ function hideTabsPageList($title, array &$links) {
  * @return bool
  */
 function checkFormEdit($title, array &$links) {
-	if(strpos($title, 'emplate') !== false){
-		echo "<br> THIS IS A TEMPLATE: $title <br>";
+	$hideEdit=true;
+	if ( (0 === strpos($title, 'Template:')) || ( 0 === strpos($title, 'Form:')) ){
+		$hideEdit=false;
+		echo "<br> THIS IS A FORM/TEMPLATE: $title <br>";
 	}
 	if (array_key_exists ( "views", $links )) {
 		if (array_key_exists ( "formedit", $links["views"] )) {
 			if (array_key_exists ( "edit", $links["views"] )) {
-				echo "<br> REMOVE EDIT <br>";
+				if($hideEdit){
+					echo "<br> REMOVE EDIT <br>";
+				}else{
+					echo "<br> REMOVE FORMEDIT <br>";
+				}
 			}
 		}
 	}
