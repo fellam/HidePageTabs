@@ -136,29 +136,38 @@ function showTabsByGroupCategory($title, array &$links) {
 				if(count($userGroups)>0){
 					echo "<br> USER GROUPS:  <br>";
 					var_dump($userGroups);
-					$hasGroupWithRights = array();
-					foreach ( $showTabsByGroupCategory as $group => $categories ) {
-						if(array_key_exists($group,$userGroups)){
-							$hasGroupWithRights[]=$group;
-						}
-					}
-					if(count($hasGroupWithRights)>0){
-						$hasGroupCategoryRights = array();
-						foreach ( $hasGroupWithRights as $group ) {
-							foreach ( $showTabsByGroupCategory[$group] as $category => $showlist ) {
-								if(array_key_exists($category,$pageCategories)){
-									array_merge($hasGroupCategoryRights,$showlist);
-								}
+					if(in_array('sysop',$userGroups)
+						||in_array('smwadministrator',$userGroups)
+							){
+						//DO nothing if admin/sysop
+						echo "<br> USER is ADMIN/SYSOP:  <br>";
+						return true;
+					}else{
+						$hasGroupWithRights = array();
+						foreach ( $showTabsByGroupCategory as $group => $categories ) {
+							echo "<br> CK1: $group <br>";
+							if(in_arry($group,$userGroups)){
+								$hasGroupWithRights[]=$group;
 							}
 						}
-						if(count($hasGroupCategoryRights)>0){
-							echo "<br> SHOW:  <br>";
-							var_dump($hasGroupCategoryRights);
+						if(count($hasGroupWithRights)>0){
+							$hasGroupCategoryRights = array();
+							foreach ( $hasGroupWithRights as $group ) {
+								foreach ( $showTabsByGroupCategory[$group] as $category => $showlist ) {
+									if(array_key_exists($category,$pageCategories)){
+										array_merge($hasGroupCategoryRights,$showlist);
+									}
+								}
+							}
+							if(count($hasGroupCategoryRights)>0){
+								echo "<br> SHOW:  <br>";
+								var_dump($hasGroupCategoryRights);
+							}else{
+								echo "<br> User has no allowed Group Category Show directive<br>";
+							}
 						}else{
-							echo "<br> User has no allowed Group Category Show directive<br>";
+							echo "<br> User has no allowed Group <br>";
 						}
-					}else{
-						echo "<br> User has no allowed Group <br>";
 					}
 				}else{
 					echo "<br> User has no GROUPS <br>";
