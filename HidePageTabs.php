@@ -127,60 +127,47 @@ function checkFormEdit($title, array &$links) {
 function showTabsByGroupCategory($title, array &$links) {
 	global $wgUser, $wgOut, $showTabsByGroupCategory;
 	if($title == 'HideTest'){
-		$userGroups=$wgUser->getGroups();
-		$pageCategories=$wgOut->getCategories();
-		if(count($userGroups)>0){
-			
-			
-		}
-		
-		
-			echo "<br> OK1.2 <br>";
-// 			var_dump($wgUser->mGroups);
-			var_dump();
-			echo "<br> OK2:  <br>";
-			var_dump($wgOut->getCategories());
-			/*
-			foreach ( $wgOut as $k => $v ) {
-				echo "<br> KEY: $k <br>";
-// 				if(0 === strpos($title, 'Categ:')){
-					var_dump($wgOut->$k);
-// 				}
-			}
-			*/
-			echo "<br> OK3 <br>";
-			
-			foreach ( $showTabsByGroupCategory as $group => $categories ) {
-				if (in_array ( $group, $wgUser->mGroups )){
-					echo "<br> MIK <br>";
-				}
-				/*
-				foreach ( $wgUser->mGroups as $group => $categories ) {
-					if (array_key_exists ( $group, $hideTabsPageList )) {
-						foreach ( $links as $group => $tabs ) {
-							if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
-								switch ($group) {
-									case "views" :
-									case "actions" :
-										foreach ( $tabs as $tab => $props ) {
-											if (in_array( $tab, $hideTabsPageList[$title][$group])) {
-												unset( $links[$group][$tab] );
-											}
-											// 							else{
-											// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
-											// 							}
-										}
-										break;
-										// 					default:
-										// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
+		if(count($showTabsByGroupCategory)>0){
+			$pageCategories=$wgOut->getCategories();
+			if(count($pageCategories)>0){
+				echo "<br> PAGE CATEGORIES:  <br>";
+				var_dump($pageCategories);
+				$userGroups=$wgUser->getGroups();
+				if(count($userGroups)>0){
+					echo "<br> USER GROUPS:  <br>";
+					var_dump($userGroups);
+					$hasGroupWithRights = array();
+					foreach ( $showTabsByGroupCategory as $group => $categories ) {
+						if(array_key_exists($group,$userGroups)){
+							$hasGroupWithRights[]=$group;
+						}
+					}
+					if(count($hasGroupWithRights)>0){
+						$hasGroupCategoryRights = array();
+						foreach ( $hasGroupWithRights as $group ) {
+							foreach ( $showTabsByGroupCategory[$group] as $category => $showlist ) {
+								if(array_key_exists($category,$pageCategories)){
+									array_merge($hasGroupCategoryRights,$showlist);
 								}
 							}
 						}
+						if(count($hasGroupCategoryRights)>0){
+							echo "<br> SHOW:  <br>";
+							var_dump($hasGroupCategoryRights);
+						}else{
+							echo "<br> User has no allowed Group Category Show directive<br>";
+						}
+					}else{
+						echo "<br> User has no allowed Group <br>";
 					}
+				}else{
+					echo "<br> User has no GROUPS <br>";
 				}
-				*/
+			}else{
+				echo "<br> Page has no CATEGORIES <br>";
 			}
-		exit();
+			exit();
+		}
 	}
 }
 	
