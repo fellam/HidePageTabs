@@ -164,23 +164,20 @@ function showTabsByGroupCategory($title, array &$links) {
 								var_dump($hasGroupCategoryRights);
 								foreach ( $links as $group => $tabs ) {
 									echo "<br> GROUP: $group <br>";
-// 									if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
-// 										switch ($group) {
-// 											case "views" :
-// 											case "actions" :
-// 												foreach ( $tabs as $tab => $props ) {
+										switch ($group) {
+											case "views" :
+											case "actions" :
+												foreach ( $tabs as $tab => $props ) {
+													echo "<br> GROUPTAB: $tab <br>";
 // 													if (in_array( $tab, $hideTabsPageList[$title][$group])) {
 // 														unset( $links[$group][$tab] );
 // 													}
 // 													// 							else{
 // 													// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
 // 													// 							}
-// 												}
-// 												break;
-// 												// 					default:
-// 												// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
-// 										}
-// 									}
+												}
+												break;
+										}
 								}
 							}else{
 								echo "<br> User has no allowed Group Category Show directive<br>";
