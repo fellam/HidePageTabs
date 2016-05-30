@@ -159,7 +159,8 @@ function showTabsByGroupCategory($title, array &$links) {
 									if(in_array($category,$pageCategories)){
 										echo "<br> CK4: ".$category."<br>";
 										var_dump($showlist);
-										array_merge($hasGroupCategoryRights,$showlist);
+// 										$hasGroupCategoryRights = array_unique (array_merge ($hasGroupCategoryRights,$showlist));
+										$hasGroupCategoryRights = array_merge($hasGroupCategoryRights,$showlist);
 									}
 								}
 							}
