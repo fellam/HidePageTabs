@@ -162,16 +162,17 @@ function showTabsByGroupCategory($title, array &$links) {
 										foreach ( $tabs as $tab => $props ) {
 											if (!in_array( $tab, $hasGroupCategoryRights)) {
 												unset( $links[$group][$tab] );
-											}else{
-												echo "<br> GROUP-TAB: [$group][$tab]  <br>";
 											}
+// 											else{
+// 												echo "<br> GROUP-TAB: [$group][$tab]  <br>";
+// 											}
 										}
 										break;
-									default:
-										foreach ( $tabs as $tab => $props ) {
-											echo "<br> DEF - GROUP-TAB: [$group][$tab]  <br>";
-										}
-										break;
+// 									default:
+// 										foreach ( $tabs as $tab => $props ) {
+// 											echo "<br> DEF - GROUP-TAB: [$group][$tab]  <br>";
+// 										}
+// 										break;
 									}
 								}
 							}else{
