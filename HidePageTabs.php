@@ -146,28 +146,42 @@ function showTabsByGroupCategory($title, array &$links) {
 						$hasGroupWithRights = array();
 						foreach ( $showTabsByGroupCategory as $group => $categories ) {
 							if(in_array($group,$userGroups)){
-								echo "<br> CK1: $group -> ADD <br>";
 								$hasGroupWithRights[]=$group;
 							}
 						}
-						echo "<br> CK2: ".count($hasGroupWithRights)." <br>";
 						if(count($hasGroupWithRights)>0){
 							$hasGroupCategoryRights = array();
 							foreach ( $hasGroupWithRights as $group ) {
-								echo "<br> CK3: ".$group." <br>";
 								foreach ( $showTabsByGroupCategory[$group] as $category => $showlist ) {
 									if(in_array($category,$pageCategories)){
-										echo "<br> CK4: ".$category."<br>";
-										var_dump($showlist);
-// 										$hasGroupCategoryRights = array_unique (array_merge ($hasGroupCategoryRights,$showlist));
-										$hasGroupCategoryRights = array_merge($hasGroupCategoryRights,$showlist);
+										$hasGroupCategoryRights = array_unique (array_merge ($hasGroupCategoryRights,$showlist));
+// 										$hasGroupCategoryRights = array_merge($hasGroupCategoryRights,$showlist);
 									}
 								}
 							}
-							echo "<br> CK5: ".count($hasGroupCategoryRights)." <br>";
 							if(count($hasGroupCategoryRights)>0){
 								echo "<br> SHOW:  <br>";
 								var_dump($hasGroupCategoryRights);
+								foreach ( $links as $group => $tabs ) {
+									echo "<br> GROUP: $group <br>";
+// 									if (array_key_exists ( $group, $hideTabsPageList[$title] )) {
+// 										switch ($group) {
+// 											case "views" :
+// 											case "actions" :
+// 												foreach ( $tabs as $tab => $props ) {
+// 													if (in_array( $tab, $hideTabsPageList[$title][$group])) {
+// 														unset( $links[$group][$tab] );
+// 													}
+// 													// 							else{
+// 													// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
+// 													// 							}
+// 												}
+// 												break;
+// 												// 					default:
+// 												// 						echo "<br> UNKNOWN GROUP: links[$group]<br>";
+// 										}
+// 									}
+								}
 							}else{
 								echo "<br> User has no allowed Group Category Show directive<br>";
 							}
