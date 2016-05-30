@@ -169,13 +169,12 @@ function showTabsByGroupCategory($title, array &$links) {
 											case "actions" :
 												foreach ( $tabs as $tab => $props ) {
 													echo "<br> GROUPTAB: $tab <br>";
-													var_dump($props);
-// 													if (in_array( $tab, $hideTabsPageList[$title][$group])) {
+													if (in_array( $tab, $hasGroupCategoryRights)) {
+														echo "<br> GROUP SHOW: $tab <br>";
 // 														unset( $links[$group][$tab] );
-// 													}
-// 													// 							else{
-// 													// 								echo "<br> UNKNOWN TAB: links[$group][$tab]<br>";
-// 													// 							}
+													}else{
+														echo "<br> GROUP HIDE: $tab <br>";
+													}
 												}
 												break;
 										}
