@@ -140,7 +140,7 @@ function showTabsByGroupCategory($title, array &$links) {
 						||in_array('smwadministrator',$userGroups)
 							){
 						//DO nothing if admin/sysop
-// 						echo "<br> USER is ADMIN/SYSOP:  <br>";
+						echo "<br> USER is ADMIN/SYSOP:  <br>";
 // 						return true;
 					}else{
 						$hasGroupWithRights = array();
