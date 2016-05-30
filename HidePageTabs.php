@@ -175,11 +175,7 @@ function showTabsByGroupCategory($title, array &$links) {
 // 										break;
 									}
 								}
-							}else{
-								echo "<br> User has no allowed Group Category Show directive<br>";
 							}
-						}else{
-							echo "<br> User has no allowed Group <br>";
 						}
 					}
 				}
