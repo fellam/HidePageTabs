@@ -160,11 +160,15 @@ function showTabsByGroupCategory($title, array &$links) {
 									case "views" :
 									case "actions" :
 										foreach ( $tabs as $tab => $props ) {
-											echo "<br> GROUP-TAB: [$group][$tab]  <br>";
 											if (!in_array( $tab, $hasGroupCategoryRights)) {
 												unset( $links[$group][$tab] );
+											}else{
+												echo "<br> GROUP-TAB: [$group][$tab]  <br>";
 											}
 										}
+										break;
+									default:
+										echo "<br> DEF - GROUP-TAB: [$group][$tab]  <br>";
 										break;
 									}
 								}
