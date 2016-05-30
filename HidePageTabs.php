@@ -126,7 +126,6 @@ function checkFormEdit($title, array &$links) {
  */
 function showTabsByGroupCategory($title, array &$links) {
 	global $wgUser, $wgOut, $showTabsByGroupCategory;
-	if($title == 'HideTest'){
 		if(count($showTabsByGroupCategory)>0){
 			$pageCategories=$wgOut->getCategories();
 			if(count($pageCategories)>0){
@@ -179,6 +178,5 @@ function showTabsByGroupCategory($title, array &$links) {
 				}
 			}
 		}
-	}
 }
 	
