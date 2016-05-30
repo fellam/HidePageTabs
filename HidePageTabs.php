@@ -145,9 +145,8 @@ function showTabsByGroupCategory($title, array &$links) {
 // 					}else{
 						$hasGroupWithRights = array();
 						foreach ( $showTabsByGroupCategory as $group => $categories ) {
-							echo "<br> CK1: $group <br>";
 							if(in_array($group,$userGroups)){
-								echo "<br> CK1: ADD <br>";
+								echo "<br> CK1: $group -> ADD <br>";
 								$hasGroupWithRights[]=$group;
 							}
 						}
@@ -155,6 +154,7 @@ function showTabsByGroupCategory($title, array &$links) {
 						if(count($hasGroupWithRights)>0){
 							$hasGroupCategoryRights = array();
 							foreach ( $hasGroupWithRights as $group ) {
+								echo "<br> CK3: ".$group." <br>";
 								foreach ( $showTabsByGroupCategory[$group] as $category => $showlist ) {
 									if(array_key_exists($category,$pageCategories)){
 										array_merge($hasGroupCategoryRights,$showlist);
