@@ -156,8 +156,6 @@ function showTabsByGroupCategory($title, array &$links) {
 							foreach ( $hasGroupWithRights as $group ) {
 								echo "<br> CK3: ".$group." <br>";
 								foreach ( $showTabsByGroupCategory[$group] as $category => $showlist ) {
-									echo "<br> CK4: ".$category."<br>";
-									var_dump($pageCategories);
 									if(in_array($category,$pageCategories)){
 										echo "<br> CK4: ".$category."<br>";
 										var_dump($showlist);
