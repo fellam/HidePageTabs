@@ -130,11 +130,19 @@ function showTabsByGroupCategory($title, array &$links) {
 		if(count($showTabsByGroupCategory)>0){
 			$pageCategories=$wgOut->getCategories();
 			if(count($pageCategories)>0){
+				echo "<br> PAGE CATEGORIES:  <br>";
+				var_dump($pageCategories);
 				$userGroups=$wgUser->getGroups();
 				if(count($userGroups)>0){
+					echo "<br> USER GROUPS:  <br>";
+					var_dump($userGroups);
 					if(!in_array('sysop',$userGroups)
 						&&!in_array('smwadministrator',$userGroups)
 							){
+						//DO nothing if admin/sysop
+// 						echo "<br> USER is ADMIN/SYSOP:  <br>";
+// 						return true;
+// 					}else{
 						$hasGroupWithRights = array();
 						foreach ( $showTabsByGroupCategory as $group => $categories ) {
 							if(in_array($group,$userGroups)){
@@ -152,17 +160,22 @@ function showTabsByGroupCategory($title, array &$links) {
 								}
 							}
 							if(count($hasGroupCategoryRights)>0){
+								echo "<br> SHOW:  <br>";
+								var_dump($hasGroupCategoryRights);
 								foreach ( $links as $group => $tabs ) {
-									switch ($group) {
-									case "views" :
-									case "actions" :
-										foreach ( $tabs as $tab => $props ) {
-											if (!in_array( $tab, $hasGroupCategoryRights)) {
-												unset( $links[$group][$tab] );
+									echo "<br> GROUP: $group <br>";
+										switch ($group) {
+										case "views" :
+										case "actions" :
+											foreach ( $tabs as $tab => $props ) {
+												echo "<br> GROUPTAB: $tab <br>";
+												if (!in_array( $tab, $hasGroupCategoryRights)) {
+													echo "<br> GROUP HIDE: $tab <br>";
+													unset( $links[$group][$tab] );
+												}
 											}
+											break;
 										}
-										break;
-									}
 								}
 							}else{
 								echo "<br> User has no allowed Group Category Show directive<br>";
