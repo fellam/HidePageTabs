@@ -140,16 +140,18 @@ function showTabsByGroupCategory($title, array &$links) {
 						||in_array('smwadministrator',$userGroups)
 							){
 						//DO nothing if admin/sysop
-						echo "<br> USER is ADMIN/SYSOP:  <br>";
-						return true;
+// 						echo "<br> USER is ADMIN/SYSOP:  <br>";
+// 						return true;
 					}else{
 						$hasGroupWithRights = array();
 						foreach ( $showTabsByGroupCategory as $group => $categories ) {
 							echo "<br> CK1: $group <br>";
-							if(in_arry($group,$userGroups)){
+							if(in_array($group,$userGroups)){
+								echo "<br> CK1: ADD <br>";
 								$hasGroupWithRights[]=$group;
 							}
 						}
+						echo "<br> CK2: ".count($hasGroupWithRights)." <br>";
 						if(count($hasGroupWithRights)>0){
 							$hasGroupCategoryRights = array();
 							foreach ( $hasGroupWithRights as $group ) {
