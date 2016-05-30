@@ -168,7 +168,9 @@ function showTabsByGroupCategory($title, array &$links) {
 										}
 										break;
 									default:
-										echo "<br> DEF - GROUP-TAB: [$group][$tab]  <br>";
+										foreach ( $tabs as $tab => $props ) {
+											echo "<br> DEF - GROUP-TAB: [$group][$tab]  <br>";
+										}
 										break;
 									}
 								}
