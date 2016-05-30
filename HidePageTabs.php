@@ -175,12 +175,14 @@ function showTabsByGroupCategory($title, array &$links) {
 							echo "<br> User has no allowed Group <br>";
 						}
 					}
-				}else{
-					echo "<br> User has no GROUPS <br>";
 				}
-			}else{
-				echo "<br> Page has no CATEGORIES <br>";
+// 				else{
+// 					echo "<br> User has no GROUPS <br>";
+// 				}
 			}
+// 			else{
+// 				echo "<br> Page has no CATEGORIES <br>";
+// 			}
 		}
 // 	}
 }
