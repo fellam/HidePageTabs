@@ -126,7 +126,7 @@ function checkFormEdit($title, array &$links) {
  */
 function showTabsByGroupCategory($title, array &$links) {
 	global $wgUser, $wgOut, $showTabsByGroupCategory;
-// 	if($title == 'HideTest'){
+	if($title == 'HideTest'){
 		if(count($showTabsByGroupCategory)>0){
 			$pageCategories=$wgOut->getCategories();
 			if(count($pageCategories)>0){
@@ -161,6 +161,7 @@ function showTabsByGroupCategory($title, array &$links) {
 									case "views" :
 									case "actions" :
 										foreach ( $tabs as $tab => $props ) {
+											echo "<br> TAB: $tab  <br>";
 											if (!in_array( $tab, $hasGroupCategoryRights)) {
 												unset( $links[$group][$tab] );
 											}
@@ -176,14 +177,8 @@ function showTabsByGroupCategory($title, array &$links) {
 						}
 					}
 				}
-// 				else{
-// 					echo "<br> User has no GROUPS <br>";
-// 				}
 			}
-// 			else{
-// 				echo "<br> Page has no CATEGORIES <br>";
-// 			}
 		}
-// 	}
+	}
 }
 	
