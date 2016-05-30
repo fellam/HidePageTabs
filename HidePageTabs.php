@@ -165,15 +165,16 @@ function showTabsByGroupCategory($title, array &$links) {
 								foreach ( $links as $group => $tabs ) {
 									echo "<br> GROUP: $group <br>";
 										switch ($group) {
-											case "views" :
-											case "actions" :
-												foreach ( $tabs as $tab => $props ) {
-													echo "<br> GROUPTAB: $tab <br>";
-													if (!in_array( $tab, $hasGroupCategoryRights)) {
-														echo "<br> GROUP HIDE: $tab <br>";
-													}
+										case "views" :
+										case "actions" :
+											foreach ( $tabs as $tab => $props ) {
+												echo "<br> GROUPTAB: $tab <br>";
+												if (!in_array( $tab, $hasGroupCategoryRights)) {
+													echo "<br> GROUP HIDE: $tab <br>";
+													unset( $links[$group][$tab] );
 												}
-												break;
+											}
+											break;
 										}
 								}
 							}else{
@@ -189,7 +190,7 @@ function showTabsByGroupCategory($title, array &$links) {
 			}else{
 				echo "<br> Page has no CATEGORIES <br>";
 			}
-			exit();
+// 			exit();
 		}
 	}
 }
